@@ -13,7 +13,7 @@ As a First Year PhD Student, I'm interested in problems and solutions focusing o
 
 ---
 # CV
-[My Resume](https://longtran1904.github.io/files/resume.pdf)
+[My Resume]({{ '/files/resume.pdf' | relative_url }})
 
 {% include base_path %}
 
