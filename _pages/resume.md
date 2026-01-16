@@ -1,7 +1,7 @@
 ---
 layout: archive
-title: "CV"
-permalink: /cv/
+title: "Resume"
+permalink: /resume/
 author_profile: true
 redirect_from:
   - /resume
@@ -10,7 +10,7 @@ redirect_from:
 {% include base_path %}
 
 <!-- Fallback download link -->
-<p><a href="{{ '/files/resume.pdf' | relative_url }}" target="_blank">Download CV (PDF)</a></p>
+<p><a href="{{ '/files/resume.pdf' | relative_url }}" target="_blank">Download Resume (PDF)</a></p>
 
 <iframe
   src="{{ '/assets/pdfjs-v3/web/viewer.html' | relative_url }}?file={{ '/files/resume.pdf' | relative_url | uri_escape }}"
