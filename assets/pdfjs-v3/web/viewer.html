@@ -1,0 +1,60 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>PDF.js v3 Minimal Viewer</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <!-- Styles from the dist -->
+  <link rel="stylesheet" href="./pdf_viewer.css" />
+  <style>
+    /* Fill the page, keep it simple */
+    html, body { height: 100%; margin: 0; }
+    #viewerContainer { position: fixed; inset: 0; overflow: auto; }
+  </style>
+</head>
+<body>
+  <!-- Required structure for the default viewer component -->
+  <div id="viewerContainer" class="viewerContainer">
+    <div id="viewer" class="pdfViewer"></div>
+  </div>
+
+  <!-- Library + viewer component (classic .js builds from v3) -->
+  <script src="../build/pdf.js"></script>
+  <script src="./pdf_viewer.js"></script>
+  <script>
+    // Tell pdf.js where the worker is (relative to THIS file)
+    pdfjsLib.GlobalWorkerOptions.workerSrc = "../build/pdf.worker.js";
+
+    // Helper: read ?file=... from the URL
+    function getParam(name) {
+      const m = new URLSearchParams(location.search).get(name);
+      return m ? decodeURIComponent(m) : null;
+    }
+
+    const url = getParam("file") || "compressed.tracemonkey.pdf"; // fallback sample
+
+    // Set up the basic viewer plumbing
+    const eventBus = new pdfjsViewer.EventBus();
+    const linkService = new pdfjsViewer.PDFLinkService({ eventBus });
+    const findController = new pdfjsViewer.PDFFindController({ eventBus, linkService });
+    const container = document.getElementById("viewerContainer");
+    const pdfViewer = new pdfjsViewer.PDFViewer({
+      container,
+      eventBus,
+      linkService,
+      findController,
+    });
+    linkService.setViewer(pdfViewer);
+
+    // Load the document and connect the viewer
+    pdfjsLib.getDocument({ url }).promise.then(pdfDocument => {
+      pdfViewer.setDocument(pdfDocument);
+      linkService.setDocument(pdfDocument);
+    }).catch(err => {
+      console.error("Failed to load PDF:", err);
+      document.body.insertAdjacentHTML("afterbegin",
+        "<p style='padding:1rem;color:#b00;'>Failed to load PDF: " + String(err) + "</p>");
+    });
+  </script>
+</body>
+</html>

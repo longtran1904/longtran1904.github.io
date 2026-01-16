@@ -22,7 +22,7 @@ baseurl                  : "/~lht21" # the subpath of your site, e.g. "/blog"
 #               Additional customization can be done by editing /_includes/author-profile.html
 author:
   # Biographic information
-  avatar           : "profile.jpg"
+  avatar           : "profile_2.jpg"
   name             : "Long Tran"
   pronouns         : # example: "she/her"  
   bio              : "Interested in Operating Systems.\nWant to build High Performance Systems.\nLove to Optimize things"

@@ -9,7 +9,15 @@ redirect_from:
 
 {% include base_path %}
 
-Education
+<!-- Fallback download link -->
+<p><a href="{{ '/files/resume.pdf' | relative_url }}" target="_blank">Download CV (PDF)</a></p>
+
+<iframe
+  src="{{ '/assets/pdfjs-v3/web/viewer.html' | relative_url }}?file={{ '/files/resume.pdf' | relative_url | uri_escape }}"
+  width="100%" height="900" style="border:none;" allowfullscreen>
+</iframe>
+
+<!-- Education
 ======
 * Ph.D in Version Control Theory, GitHub University, 2018 (expected)
 * M.S. in Jekyll, GitHub University, 2014
@@ -61,4 +69,4 @@ Teaching
   
 Service and leadership
 ======
-* Currently signed in to 43 different slack teams
+* Currently signed in to 43 different slack teams -->

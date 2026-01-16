@@ -1,3 +1,12 @@
+# Deploy on ilab
+```
+ssh netid@ilab.cs.rutgers.edu
+```
+
+go to folder: `~/common/web/netid`
+
+
+
 # Academic Pages
 **Academic Pages is a GitHub Pages template for personal and professional portfolio-oriented websites.**
 
