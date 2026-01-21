@@ -3,7 +3,7 @@
 ssh netid@ilab.cs.rutgers.edu
 ```
 
-go to folder: `~/common/web/netid`
+go to folder: `/common/web/netid`
 
 
 
